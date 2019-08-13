@@ -30,7 +30,35 @@
         </div>
 
     </div> 
-
+  <script src="./js/jquery-1.12.4.min.js"></script>
+  <script>
+      $(function(){
+          $('.input_sub').on('click',function(e){
+              e.preventDefault();
+              var username = $('.input_txt').val().trim();
+              var password = $('.input_pass').val().trim();
+              if(username==""||password==""){
+                  alert('账号密码为空，请重新输入')
+                  retuen;
+              }
+              $.ajax({
+                  type:'post',
+                  url:'http://localhost:8080/admin/user/login',
+                  data:{
+                      username:username,
+                      password:password
+                  },
+                  success:function(backData){
+                      if(backData.code==200){
+                          window.location.href ='index.html'
+                      }else{
+                          alert('账号密码错误')
+                      }
+                  }
+              })
+          })
+      })
+  </script>
 </body>
 
 </html>
