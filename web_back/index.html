@@ -119,6 +119,16 @@
                     
                 })
             })
+            $.ajax({
+                url:'http://localhost:8080/admin/user/info',
+                success:function(backData){
+                    if(backData.code==200){
+                        $('.user_info>img').attr('src',backData.data.userPic);
+                        $('.user_info>span').html('欢迎&nbsp;&nbsp;'+backData.data.nickname);
+                        $('.user_center_link>img').attr('src',backData.data.userPic);
+                    }
+                }
+            })
         })
     </script>
 </body>
